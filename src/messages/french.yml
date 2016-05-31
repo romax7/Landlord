@@ -1,0 +1,307 @@
+# Default french messages for Landlord
+# All player-facing messages can be modified here.
+info:
+  alerts:
+    leaveOwnLand: "Tu quittes ton terrain"
+    leaveOtherLand: "Tu quittes le terrain de #{owner}."
+    enterOwnLand: "Tu entres dans ton terrain"
+    enterOtherLand: "Tu entres dans le terrain #{owner}."
+    nextPage: "Fait #{label} #{cmd} #{pageNumber} pour voir la page suivante"
+    noOwner: "Aucun"
+  warnings:
+    playerCommand: "Cette commande ne peut être executer que par des joueurs"
+    noPerms: "Tu n'as pas la permission."
+    unknownPlayer: "Joueur inconnue."
+    notOwner: "Tu n'es pas propriétaire de cette parcelle."
+    badPage: "Ce n'est pas un nombre valide."
+    noClaim: "Tu ne peux pas protéger de terrain dans ce monde."
+commands:
+  addFriend:
+    usage: "/#{label} #{cmd} <player>"
+    description: "Add friend to this land."
+    alerts:
+      success: "Player #{player} is now a friend of this land."
+      alreadyFriend: "Player #{player} is already a friend of this land."
+    triggers:
+      - "friend"
+      - "addfriend"
+      - "trust"
+  claim:
+    usage: "/#{label} #{cmd}"
+    description: "Protégé ce chunk"
+    alerts:
+      success: "Tu as protégé le chunk #{chunkCoords} dans le monde '#{worldName}' avec succès!"
+      cost: "Coûte #{pricetag} pour protégé."
+      alreadyOwn: "Tu es deja propriétaire de ce terrain"
+      otherOwn: "Quelqu'un d'autre a déjà protégé ce terrain."
+      noClaimZone: "Tu ne peux pas protégé ici."
+      ownLimit: "Tu ne peux protégé que #{limit} chunks au maximum."
+      claimPrice: "Le prix à payer pour protéger un chunk est de #{cost}."
+      charged: "Tu as payé #{cost} pour acheter ce terrain."
+    triggers:
+      - "claim"
+      - "buy"
+      - "protect"
+  clearWorld:
+    usage: "/#{label} #{cmd} <monde> [joueur]"
+    description: "Supprime touts les terrains d'un joueur dans un monde précis. Supprime touts les terrains d'un monde (Executable seulement par la console)."
+    alerts:
+      notConsole: "Tu ne peux supprimer un monde que depuis la console"
+      chunkWarning: "Le chunks ne se sont pas régénéré."
+      noLand: "Aucun terrain supprimé"
+      success: "Terrain(s) suprimé!"
+    triggers:
+      - "clearworld"
+  friendAll:
+    usage: "/#{label} #{cmd} <player>"
+    description: "Ajouté un ami à tout tes terrains"
+    alerts:
+      success: "#{player} a été ajouté à tout tes terrains"
+      noLand: "Tu n'as aucun terrain."
+    triggers:
+      - "friendall"
+      - "addfriendall"
+  friends:
+    usage: "/#{label} #{cmd}"
+    description: "Affiche la liste des amis de ce terrains"
+    alerts:
+      listHeader: "Amis dans ce terrain"
+      noFriends: "Ce terrain ne contient aucun d'ami"
+      online: "En ligne"
+      offline: "Hors ligne"
+    triggers:
+      - "friends"
+  help:
+    usage: "/#{label} #{cmd} [page #]"
+    description: "Affiche cette page d'aide"
+    alerts:
+      header: "Landlord #{version} Créé par #{author}"
+      aliases: "Aliases: #{aliases}"
+    triggers:
+      - "help"
+      - "?"
+  info:
+    usage: "/#{label} #{cmd}"
+    description: "Voir les informations de ce terrain"
+    alerts:
+      landInfo: "Tu es dans le chunk #{chunkCoords} dans le monde #{worldName} "
+      landOwner: "Propriétaire: #{ownerName}"
+    triggers:
+      - "info"
+  landList:
+    usage: "/#{label} #{cmd}"
+    description: "Liste de tout tes terrains"
+    alerts:
+      noLand: "Tu n'as aucun terrain."
+      listHeader: "Coords - Chunk Coords - Monde"
+      outputHeader: "Tes terrains"
+      pageLabel: "Page #{pageNum}"
+    triggers:
+      - "list"
+      - "ls"
+  listPlayer:
+    usage: "/#{label} listplayer <player> [page#]"
+    description: "Liste des terrains d'un joueur"
+    alerts:
+      ownsNone: "#{owner} n'a aucun terrain."
+      listHeader: "Coords - Chunk Coords - Monde"
+      ownersLand: "Terrains de #{owner}"
+      pageNum: " Page #{pageNumber}"
+      nextPage: "Fait #{label} #{cmd} #{pageNumber} pour voir la page suivante"
+    triggers:
+      - "listplayer"
+  manage:
+      usage: "/#{label} #{cmd}"
+      description: "Gérer les permissions de ce terrain."
+      alerts:
+        noLand: "Il n'y a rien à gérer"
+        otherLand: "Gére un terrain d'un autre joueur"
+      triggers:
+        - "manage"
+        - "edit"
+        - "config"
+        - "configure"
+  reload:
+      usage: "/#{label} #{cmd}"
+      description: "Recharger le fichier de configuration"
+      alerts:
+        configReloaded: "Fichier de configuration rechargé"
+      triggers:
+        - "reload"
+  showMap:
+      usage: "/#{label} #{cmd}"
+      description: "Active la carte des terrains"
+      alerts:
+        mapDisabled: "Carte des terrains activé"
+        noMap: "Carte des terrains désactivé"
+      triggers:
+        - "map"
+        - "grid"
+  unclaim:
+      usage: "/#{label} #{cmd} [x, y] [world]."
+      description: "Ne plus protéger ce terrain"
+      alerts:
+        noWorld: "Monde #{worldName} n'existe pas."
+        landSold: "Terrain vendu pour #{amount}."
+        unclaimOther: "Protection retirer pour #{player}"
+        unclaimed: "Protection retirer avec succès sur le chunk #{chunkCoords} dans le monde #{worldName}."
+        priceWarning: "Recevez #{pricetag} quand vous retirez une protection"
+        regenWarning: "Régénération du chunk"
+      triggers:
+        - "unclaim"
+        - "sell"
+  unfriend:
+      usage: "/#{label} #{cmd} <player>"
+      description: "Retire un ami de ce terrain"
+      alerts:
+        notFriend: "Le joueur #{playerName} n'est pas ajouté dans ce terrain"
+        unfriended: "Le joueur #{playerName} a bien été retiré de ce terrain"
+      triggers:
+        - "unfriend"
+        - "remfriend"
+        - "removefriend"
+        - "delfriend"
+        - "deletefriend"
+        - "untrust"
+  unfriendAll:
+      usage: "/#{label} #{cmd} <player>"
+      description: "Retire un ami de toutes tes parcelles"
+      alerts:
+        playerRemoved: "#{playername} a bien été retiré de tous tes terrain"
+        noLand: "Tu n'as actuellement aucun terrain"
+      triggers:
+        - "unfriendall"
+        - "remfriendall"
+        - "remallfriends"
+        - "removeallfriends"
+        - "removefriendall"
+        - "untrustall"
+        - "delfriendall"
+        - "delallfriends"
+        - "deleteallfriends"
+        - "deletefriendall"
+map:
+  legend:
+    yours: "Toi"
+    friends: "Amis"
+    others: "Autre'"
+  header: "Carte des terrains"
+flags:
+  build:
+    displayName: "Construire"
+    #note that the pipe '|' notifies Landlord to use a new line for flag descriptions.
+    description: "Donne la permission de placer|et de casser des bloques ainsi|que la permission de modifier des choses comme un cadre|ou encore un bloque musical"
+    allowedTitle: "Droit de construire"
+    allowedText: "peut construire"
+    deniedTitle: "Interdit de construire"
+    deniedText: "ne peut pas construire"
+  harmAnimals:
+    displayName: "Tuer les animaux"
+    description: "Donne la permission de tuer/fraper des|animaux comme le cochon; le mouton, le poulet, le cheval et autre."
+    allowedTitle: "Droit de tuer les animaux"
+    allowedText: "peut tuer les animaux"
+    deniedTitle: "Interdit de tuer les animaux"
+    deniedText: "ne peut pas tuer les animaux"
+  openDoor:
+    displayName: "Ouvrir les portes"
+    description: "Donne la permission d'ouvrir/fermer les portes"
+    allowedTitle: "Droit d'ouvrir les portes"
+    allowedText: "peut ouvrir les portes"
+    deniedTitle: "Interdit d'ouvrir les portes"
+    deniedText: "ne peut pas ouvrir les portes"
+  pvp:
+    displayName: "PVP"
+    description: "Autorise les joueurs à taper d'autre |joueurs sur ce terrain|"
+    allowedTitle: "Droit de PVP"
+    allowedText: "peut taper les autres joueurs"
+    deniedTitle: "Interdit de PVP"
+    deniedText: "ne peut pas taper les autres joueurs"
+  tntDamage:
+    displayName: "Dégats de TNT"
+    description: "Donne la permission de casser des blocs|avec de la tnt."
+    allowedTitle: "Autorise les dégats de TNT"
+    allowedText: "peut casser à la TNT"
+    deniedTitle: "Interdit les dégats de TNT"
+    deniedText: "ne peut pas casser à la TNT"
+  useContainers:
+    displayName: "Utiliser les containers"
+    description: "Donne la permission d'utiliser les|coffres, fours, enclumes, entonnoirs,|droppers, distributeurs, balises,|brewing stands, chaudrons,|and Jukeboxes."
+    allowedTitle: "Autoriser l'utilisation de containers"
+    allowedText: "peut utiliser les containers."
+    deniedTitle: "Interdit l'utilisation de containers"
+    deniedText: "ne peut pas utiliser les containers"
+  useRedstone:
+    displayName: "utiliser de la Redstone"
+    description: "Donne la permission d'utiliser les boutons,|levier, et plaque de pressions,|ainsi que les crochets."
+    allowedTitle: "Autosiser l'usage de la redstone"
+    allowedText: "peut utiliser la redstone."
+    deniedTitle: "Interdit l'usage de la redstone"
+    deniedText: "ne peut pas utiliser la redstone."
+event:
+  build:
+    blockPlace: "Tu n'es pas autorisé à construire dans ce terrain."
+    blockBreak: "Tu n'es pas autorisé à casser dans ce terrain."
+    bucketEmpty: "Tu ne peux pas placer ça dans ce terrain."
+    bucketFill: "Tu ne peux pas faire ça sur ce terrain."
+    hangingBreak: "Tu ne peux pas detruire ça dans ce terrain."
+    useArmorStand: "Tu ne peux pas faire ça ici!"
+    breakArmorStandWithMelee: "Tu ne peux pas faire ça ici."
+    breakArmorStandWithArrow: "Tu ne peux pas faire ça ici."
+    itemFrameRemoveWithMelee: "Tu ne peux pas faire ça ici."
+    itemFrameRemoveWithArrow: "Tu ne peux pas faire ça ici."
+    itemFrameRemoveDirectly: "Tu ne peux pas casser ça ici."
+    itemFrameRotate: "Tu ne peux pas faire ça ici."
+    paintingPlace: "Tu ne peux pas placer ça ici."
+    cropDestroy: "Tu n'as pas le droit de casser les plantations sur ce terrain"
+    useFireCharge: "Tu ne peux pas faire ça ici."
+    blockStateChange: "Tu ne peux pas faire ça ici."
+  harmAnimals:
+    melee: "Tu ne peux pas tuer les animaux sur ce terrain."
+    projectile: "Tu ne peux pas tuer les animaux sur ce terrain."
+  openDoor:
+    interact: "Tu ne peux pas ouvrir les portes de ce terrain."
+  pvp:
+    melee: "Tu ne peux pas tuer les autres joueurs sur ce terrain."
+    projectile: "Tu ne peux pas tuer les autres joueurs sur ce terrain."
+  tntDamage:
+    detonate: "TU ne peux pas faire exploser de TNT sur ce terrain."
+    ignite: "Tu n'es pas autorisé à allumer de TNT sur ce terrain"
+  useContainers:
+    interact: "Tu n'es pas autorisé à utiliser des conteneurs sur ce terrain"
+  useRedstone:
+    interact: "Tu ne peux pas utiliser de redstone sur ce terrain"
+manager:
+  title: "Gèstion du terrain"
+  toggle: "Clique pour activer/désactiver"
+  saved: "Permissions du terrain sauvegardé"
+  players:
+    friends: "Ajouté eu terrain"
+    others: "Autres joueurs"
+  help:
+    button: "Aide"
+    text:
+      - "Clique sur un bloc de laine"
+      - "pour changer l'état d'une permission"
+      - "La laine rouge veut dire que le groupe n'est pas autorisé"
+      - "Et la laine verte veut dire que le groupe est autorisé"
+      - "Survole un item pour plus d'information."
+  table:
+    friends:
+      title: "Ajouté au terrains"
+      description:
+        - "Les permissions s'appliquent"
+        - "au personne ajouté en tant qu'ami au terrain"
+    others:
+      title: "Tout les monde"
+      description:
+        - "Les permissions s'appliquent"
+        - "aux personnes autre que les amis"
+  pagination:
+    next:
+      title: "Page suivante"
+      description:
+        - "Voir la page suivante des options"
+    previous:
+      title: "Page précédente"
+      description:
+        - "Voir la page précédente des options"
